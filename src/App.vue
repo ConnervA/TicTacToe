@@ -1,30 +1,25 @@
 <template>
-<div class="h-screen flex justify-center items-center bg-blue-700">
+<div class="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-yellow-500 to-orange-700">
   <Header class="text-5xl font-bold text-white text-center absolute top-10">
     TicTacToe
     <div>{{isPlayer1 ? 'Player 1' : 'Player 2'}}</div>
   </Header>
-  <div class="bg-blue-700 w-96 h-96 text-center aspect-square rounded-md shadow-lg">
-    <div v-if="isGameWon" class="absolute top-60 left-0 right-0 text-white text-4xl font-bold py-2 rounded-t-md">
-      Spieler {{isPlayer1 ? '2' : '1'}} hat gewonnen!
-    </div>
-    <div class="grid grid-cols-3 gap-4">
-      <div v-for="n in tictactoeGrid" class="border-2 border-white aspect-square rounded-md" @click="clickHandler(n.id)">
-        <div v-if="n.value === 1" class="w-2/3 h-2/3 mx-auto my-4 rounded-full border-8 border-red-700"></div>
-        <div v-else-if="n.value === 2" class="my-1 text-8xl text-red-700">X</div>
-        <div v-else></div>
-      </div>
-    </div>        
+
+  <div v-if="isGameWon" class="text-white text-4xl font-bold py-2 rounded-t-md">
+    Spieler {{isPlayer1 ? '2' : '1'}} hat gewonnen!
   </div>
-  <!-- <footer class="w-full bg-blue-700 text-white py-4">
-    <div class="flex justify-evenly">
-      <div class="text-center font-semibold">Conner von Ahnen</div>
-      <div class="text-center font-semibold">Scopvisio FibuNet GmbH</div>
+
+  <div class="grid grid-cols-3 gap-4 my-6 w-96 h-96 text-center aspect-square rounded-md">
+    <div v-for="n in tictactoeGrid" class="border-2 border-white aspect-square rounded-md" @click="clickHandler(n.id)">
+      <div v-if="n.value === 1" class="w-2/3 h-2/3 mx-auto my-4 rounded-full border-8 border-black"></div>
+      <div v-else-if="n.value === 2" class="my-1 text-8xl text-black">X</div>
+      <div v-else></div>
     </div>
-  </footer> -->
-</div>
-<div>
-  <button @click="clickNew">Neustart!</button>
+  </div>        
+
+  <div>
+    <button @click="clickNew" class="text-4xl text-white font-bold rounded-md">Neustart</button>
+  </div>  
 </div>
 </template>
 <script setup lang="ts">
